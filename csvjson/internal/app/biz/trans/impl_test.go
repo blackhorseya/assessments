@@ -65,13 +65,13 @@ func Test_impl_LoadJson(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			i := &impl{}
-			got, err := i.LoadJson(tt.args.path)
+			got, err := i.LoadJSON(tt.args.path)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("LoadJson() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("LoadJSON() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("LoadJson() got = %v, want %v", got, tt.want)
+				t.Errorf("LoadJSON() got = %v, want %v", got, tt.want)
 			}
 		})
 	}

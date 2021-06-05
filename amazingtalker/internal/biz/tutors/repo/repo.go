@@ -6,6 +6,7 @@ import (
 	"github.com/google/wire"
 )
 
+// IRepo declare repo functions
 type IRepo interface {
 	GetInfoBySlug(ctx contextx.Contextx, slug string) (*pb.Tutor, error)
 

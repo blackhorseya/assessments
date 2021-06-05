@@ -24,10 +24,10 @@ func Background() Contextx {
 }
 
 // WithValue returns a copy of parent in which the value associated with key is val.
-func WithValue(parent Contextx, key string, val interface{}) Contextx {
+func WithValue(parent Contextx, key interface{}, val interface{}) Contextx {
 	return Contextx{
 		Context:     context.WithValue(parent, key, val),
-		FieldLogger: parent.FieldLogger.WithField(key, val),
+		FieldLogger: parent.FieldLogger.WithField(key.(string), val),
 	}
 }
 

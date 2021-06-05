@@ -16,7 +16,7 @@ var (
 		Short: "transfer json file to csv",
 		Run: func(cmd *cobra.Command, args []string) {
 			biz := trans.NewImpl()
-			people, err := biz.LoadJson(file)
+			people, err := biz.LoadJSON(file)
 			if err != nil {
 				fmt.Println(err)
 				return

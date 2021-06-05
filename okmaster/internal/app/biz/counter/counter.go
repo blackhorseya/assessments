@@ -6,6 +6,7 @@ import (
 	"golang.org/x/time/rate"
 )
 
+// IBiz declare counter service functions
 type IBiz interface {
 	Count(ctx contextx.Contextx, ip string, limiter *rate.Limiter) (int, error)
 }

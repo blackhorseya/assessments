@@ -13,6 +13,7 @@ type impl struct {
 	biz tutors.IBiz
 }
 
+// NewImpl serve caller to create an IHandler
 func NewImpl(biz tutors.IBiz) IHandler {
 	return &impl{biz: biz}
 }

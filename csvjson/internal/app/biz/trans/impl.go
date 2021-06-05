@@ -54,8 +54,8 @@ func (i *impl) LoadCSV(path string, num int) ([]*entities.Profile, error) {
 	return people, nil
 }
 
-// LoadJson serve user to load json file to people
-func (i *impl) LoadJson(path string) ([]*entities.Profile, error) {
+// LoadJSON serve user to load json file to people
+func (i *impl) LoadJSON(path string) ([]*entities.Profile, error) {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, err

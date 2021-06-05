@@ -23,6 +23,7 @@ func (r respBodyWriter) WriteString(s string) (int, error) {
 	return r.ResponseWriter.WriteString(s)
 }
 
+// CacheMiddleware serve caller to added cache middleware into gin
 func CacheMiddleware(store *cache.Cache) gin.HandlerFunc {
 	queue := make(chan bool, 1)
 

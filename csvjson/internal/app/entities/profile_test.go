@@ -7,7 +7,7 @@ import (
 
 var (
 	p1 = &Profile{
-		Id:          "1",
+		ID:          "1",
 		FirstName:   "Marc",
 		LastName:    "Smith",
 		Email:       "marc@csvjson.com",
@@ -72,7 +72,7 @@ func TestNewProfileFromLine(t *testing.T) {
 
 func TestProfile_ToLineByHeader(t *testing.T) {
 	type fields struct {
-		Id          string
+		ID          string
 		FirstName   string
 		LastName    string
 		Email       string
@@ -93,7 +93,7 @@ func TestProfile_ToLineByHeader(t *testing.T) {
 		{
 			name: "header then string",
 			fields: fields{
-				Id:          "1",
+				ID:          "1",
 				FirstName:   "Marc",
 				LastName:    "Smith",
 				Email:       "marc@csvjson.com",
@@ -101,7 +101,7 @@ func TestProfile_ToLineByHeader(t *testing.T) {
 				Role:        "Dev",
 				Phone:       "541-754-3010",
 			},
-			args:    args{header: "FirstName,LastName,Email,Description,Role,Phone,Id"},
+			args:    args{header: "FirstName,LastName,Email,Description,Role,Phone,ID"},
 			want:    "Marc,Smith,marc@csvjson.com,Writer of Java,Dev,541-754-3010,1",
 			wantErr: false,
 		},
@@ -109,7 +109,7 @@ func TestProfile_ToLineByHeader(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := &Profile{
-				Id:          tt.fields.Id,
+				ID:          tt.fields.ID,
 				FirstName:   tt.fields.FirstName,
 				LastName:    tt.fields.LastName,
 				Email:       tt.fields.Email,

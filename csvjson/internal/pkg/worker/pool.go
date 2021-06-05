@@ -5,7 +5,8 @@ import (
 	"time"
 )
 
-type pool struct {
+// Pool declare worker pool
+type Pool struct {
 	Size    int
 	Workers []*Worker
 
@@ -19,9 +20,9 @@ type pool struct {
 	WorkerQ []chan []string
 }
 
-// NewPool new a pool for worker
-func NewPool(size int) *pool {
-	return &pool{
+// NewPool new a Pool for worker
+func NewPool(size int) *Pool {
+	return &Pool{
 		Size:       size,
 		In:         make(chan []string),
 		Out:        make(chan *entities.Profile),
@@ -30,11 +31,13 @@ func NewPool(size int) *pool {
 	}
 }
 
-func (p *pool) WorkerReady(worker chan []string) {
+// WorkerReady serve caller to notify a worker is ready
+func (p *Pool) WorkerReady(worker chan []string) {
 	p.WorkerChan <- worker
 }
 
-func (p *pool) Start() *pool {
+// Start serve caller to start a pool
+func (p *Pool) Start() *Pool {
 	go func() {
 		for {
 			if len(p.JobQ) > 0 && len(p.WorkerQ) == 0 && len(p.Workers) <= p.Size {
