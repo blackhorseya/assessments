@@ -1,0 +1,12 @@
+app:
+  name: "ip rate limit"
+
+http:
+  port: 8080
+  mode: debug
+  limit: 1
+  burst: 60
+
+log:
+  format: text
+  level: debug

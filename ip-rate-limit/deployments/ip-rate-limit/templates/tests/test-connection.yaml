@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "ip-rate-limit.fullname" . }}-test-connection"
+  labels:
+    {{- include "ip-rate-limit.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "ip-rate-limit.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
