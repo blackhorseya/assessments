@@ -1,0 +1,17 @@
+language: go
+
+go:
+- '1.15'
+
+git:
+  submodules: false
+
+env:
+  global:
+    - GO111MODULE=on
+
+script:
+  - make test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

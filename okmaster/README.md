@@ -35,7 +35,7 @@
 Clone source code
 
 ```bash
-git clone git@github.com:blackhorseya/ip-rate-limit.git
+git clone git@github.com:blackhorseya/okmaster.git
 ```
 
 ### Run with local
