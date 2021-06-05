@@ -1,0 +1,147 @@
+basePath: /api
+definitions:
+  pb.PriceInfo:
+    properties:
+      normal:
+        type: integer
+      trial:
+        type: integer
+    type: object
+  pb.Tutor:
+    properties:
+      ID:
+        type: string
+      headline:
+        type: string
+      introduction:
+        type: string
+      name:
+        type: string
+      priceInfo:
+        $ref: '#/definitions/pb.PriceInfo'
+      slug:
+        type: string
+      teachingLanguages:
+        items:
+          type: integer
+        type: array
+    type: object
+info:
+  contact:
+    email: blackhorseya@gmail.com
+    name: Sean Cheng
+    url: https://blog.seancheng.space
+  description: AmazingTalker API
+  license:
+    name: GPL-3.0
+    url: https://spdx.org/licenses/GPL-3.0-only.html
+  title: AmazingTalker API
+  version: 0.0.1
+paths:
+  /liveness:
+    get:
+      consumes:
+      - application/json
+      description: to know when to restart an application
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Liveness
+      tags:
+      - Health
+  /readiness:
+    get:
+      consumes:
+      - application/json
+      description: Show application was ready to start accepting traffic
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Readiness
+      tags:
+      - Health
+  /tutor/{slug}:
+    get:
+      consumes:
+      - application/json
+      description: get tutor by slug
+      parameters:
+      - description: Tutor slug
+        in: path
+        name: slug
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.Tutor'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: GetInfoBySlug
+      tags:
+      - Tutors
+  /tutors/{slug}:
+    get:
+      consumes:
+      - application/json
+      description: get tutor list by language slug
+      parameters:
+      - description: Language slug
+        in: path
+        name: slug
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/pb.Tutor'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ListByLangSlug
+      tags:
+      - Tutors
+swagger: "2.0"

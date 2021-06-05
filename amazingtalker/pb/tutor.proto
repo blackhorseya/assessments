@@ -1,0 +1,18 @@
+syntax = "proto3";
+package pb;
+option go_package = ".;pb";
+
+message PriceInfo {
+  int32 trial = 1;
+  int32 normal = 2;
+}
+
+message Tutor {
+  string ID = 1;
+  string slug = 2;
+  string name = 3;
+  string headline = 4;
+  string introduction = 5;
+  PriceInfo priceInfo = 6;
+  repeated int32 teachingLanguages = 7;
+}

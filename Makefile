@@ -13,3 +13,18 @@ report:
 .PHONY: test-unit
 test-unit:
 	@sh $(shell pwd)/scripts/go.test.sh
+
+.PHONY: gen
+gen: gen-wire gen-pb gen-swagger
+
+.PHONY: gen-wire
+gen-wire:
+	@wire gen ./...
+
+.PHONY: gen-pb
+gen-pb:
+	@protoc --go_out=plugins=grpc,paths=source_relative:. ./internal/pkg/entity/**/*.proto
+
+.PHONY: gen-swagger
+gen-swagger:
+	@swag init -g cmd/$(APP_NAME)/main.go --parseInternal -o api/docs

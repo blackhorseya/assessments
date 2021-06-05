@@ -1,0 +1,11 @@
+http:
+  port: 8080
+  mode: "debug"
+
+db:
+  debug: true
+  url: "amazingtalker:changeme@tcp(localhost:13306)/amazingtalker?charset=utf8"
+
+log:
+  format: text
+  level: debug
