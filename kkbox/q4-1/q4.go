@@ -1,5 +1,6 @@
-package q4_1
+package q4
 
+// Solution ...
 func Solution(A []int) int {
 	if len(A) >= 100000 {
 		return -1

@@ -14,12 +14,14 @@ type kv struct {
 	freq         int
 }
 
+// LFUCache ...
 type LFUCache struct {
 	capacity int
 	data     map[int]*list.Element
 	hits     *list.List
 }
 
+// New ...
 func New(cap int) *LFUCache {
 	return &LFUCache{
 		capacity: cap,
@@ -28,6 +30,7 @@ func New(cap int) *LFUCache {
 	}
 }
 
+// Get ...
 func (c *LFUCache) Get(key int) int {
 	// get the key, I must add freq 1 and update lastUsedTime for now
 	if el, ok := c.data[key]; ok {
@@ -45,6 +48,7 @@ func (c *LFUCache) Get(key int) int {
 	return -1
 }
 
+// Put ...
 func (c *LFUCache) Put(k, v int) {
 	now := time.Now().UnixNano()
 	newEle := kv{

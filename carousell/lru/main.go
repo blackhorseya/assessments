@@ -10,12 +10,14 @@ type kv struct {
 	v int
 }
 
+// LRUCache ...
 type LRUCache struct {
 	capacity int
 	data     map[int]*list.Element
 	hits     *list.List
 }
 
+// NewLRUCache ...
 func NewLRUCache(cap int) *LRUCache {
 	return &LRUCache{
 		capacity: cap,
@@ -24,6 +26,7 @@ func NewLRUCache(cap int) *LRUCache {
 	}
 }
 
+// Get ...
 func (c *LRUCache) Get(k int) int {
 	// get value by key
 	if el, ok := c.data[k]; ok {
@@ -35,6 +38,7 @@ func (c *LRUCache) Get(k int) int {
 	return -1
 }
 
+// Put ...
 func (c *LRUCache) Put(k, v int) {
 	// get the key and move the key to front in the hits
 	if el, ok := c.data[k]; ok {

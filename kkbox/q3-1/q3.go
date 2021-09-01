@@ -1,5 +1,6 @@
-package q3_1
+package q3
 
+// Solution ...
 func Solution(riddle string) string {
 	b := []byte(riddle)
 	var prev byte

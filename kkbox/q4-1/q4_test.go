@@ -1,4 +1,4 @@
-package q4_1
+package q4
 
 import "testing"
 

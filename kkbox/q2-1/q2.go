@@ -1,5 +1,6 @@
-package q2_1
+package q2
 
+// Solution ...
 func Solution(A []int) int {
 	sum := 1
 	for _, val := range A {
