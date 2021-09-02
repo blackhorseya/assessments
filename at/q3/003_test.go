@@ -1,4 +1,4 @@
-package q3
+package main
 
 import (
 	"reflect"

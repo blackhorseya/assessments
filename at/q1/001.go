@@ -1,4 +1,4 @@
-package q1
+package main
 
 import "strconv"
 

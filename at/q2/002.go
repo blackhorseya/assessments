@@ -1,4 +1,4 @@
-package q2
+package main
 
 func max(a, b int) int {
 	if a > b {
