@@ -1,4 +1,4 @@
-# Glasnostic
+# Convert csv and json
 
 ## Goals
 
