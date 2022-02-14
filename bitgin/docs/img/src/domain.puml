@@ -1,0 +1,45 @@
+@startuml domain
+
+skinparam rectangle {
+    roundCorner<<domain>> 25
+    roundCorner<<subdomain>> 25
+    roundCorner<<core subdomain>> 25
+}
+
+agent "quote source" as quoteSource
+
+rectangle "bitgin" <<domain>> {
+    rectangle "quote" <<support>> <<subdomain>> as quoteDomain {
+        usecase "subscribe context" as subscribeContext
+        usecase "publish context" as publishContext
+    }
+
+    rectangle "user" <<support>> <<subdomain>> as userDomain {
+        usecase "login context" as loginContext
+    }
+
+    rectangle "strategy" <<core subdomain>> as strategyDomain #79c4f2 {
+        usecase "scan strategy context" as scanStrategyContext
+        usecase "manage strategy context" as manageStrategyContext
+    }
+
+    rectangle "trading" <<generic>> <<subdomain>> as tradingDomain {
+        usecase "trade context" as tradeContext
+    }
+
+    rectangle "report" <<generic>> <<subdomain>> as reportDomain {
+        usecase "report context" as reportContext
+    }
+}
+
+loginContext -- manageStrategyContext
+loginContext -- reportContext
+
+quoteSource -- subscribeContext
+publishContext -- scanStrategyContext
+
+scanStrategyContext -- tradeContext
+
+tradeContext -- reportContext
+
+@enduml

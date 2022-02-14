@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+package "GUI" {
+    [read quote file] --> [quote component]
+    [quote component] --> [strategy component]
+    [strategy component] --> [trade component]
+    [trade component] --> [report component]
+}
+
+@enduml

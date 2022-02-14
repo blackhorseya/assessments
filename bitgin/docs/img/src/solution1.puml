@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+package "GUI" {
+    [quote component] --> [strategy component]
+    [strategy component] --> [trade component]
+}
+
+Websocket --> [quote component]
+[trade component] --> [outside exchange]
+
+@enduml
